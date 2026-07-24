@@ -2,8 +2,10 @@
 
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE.txt)
 
-GitHub Action for [xslint](https://github.com/maxonfjvipon/xslint) - a CLI tool
-for checking the quality of XSL stylesheets.
+GitHub Action for [xslint](https://github.com/maxonfjvipon/xslint) - a CLI
+linter for XSL stylesheets. By default it runs with `--format github`, so each
+defect appears as an inline annotation on the pull-request diff, with no
+SARIF-upload step.
 
 ## Usage
 
@@ -17,29 +19,51 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: maxonfjvipon/xslint-action@0.0.3
+      - uses: maxonfjvipon/xslint-action@0.0.5
 ```
 
-### Examples
+With no inputs it lints the whole checkout and annotates the diff.
 
-Lint a specific directory and/or file:
+## Inputs
+
+All inputs are optional:
+
+- `args`: files and directories to check, one per line (defaults to `.`).
+- `suppress`: checks to suppress, one per line.
+- `format`: output format - `github` (default), `text`, `json`, or `sarif`.
+- `max-warnings`: warnings to allow before the run fails (`-1` allows any).
+- `config`: path to a `.xslint.yml` configuration file.
+- `quiet`: set to `true` to suppress the informational logs.
+
+## Examples
+
+Lint specific paths:
 
 ```yaml
-- uses: maxonfjvipon/xslint-action@0.0.3
+- uses: maxonfjvipon/xslint-action@0.0.5
   with:
-    args:
-      - 'src/xsl'
-      - 'resources/hello.xsl'
+    args: |
+      src/xsl
+      resources/hello.xsl
 ```
 
 Suppress specific checks:
 
 ```yaml
-- uses: maxonfjvipon/xslint-action@0.0.3
+- uses: maxonfjvipon/xslint-action@0.0.5
   with:
-    suppress:
-      - 'short-names'
-      - 'template-match-are-you-confusing-variable-and-node'
+    suppress: |
+      short-names
+      confusing-variable-and-node
+```
+
+Allow up to ten warnings and emit SARIF instead of annotations:
+
+```yaml
+- uses: maxonfjvipon/xslint-action@0.0.5
+  with:
+    max-warnings: '10'
+    format: 'sarif'
 ```
 
 ## How to Contribute
