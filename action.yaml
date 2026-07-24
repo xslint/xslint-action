@@ -13,6 +13,19 @@ inputs:
   suppress:
     description: 'Checks to suppress'
     required: false
+  format:
+    description: 'Output format: github, text, json, or sarif'
+    required: false
+    default: 'github'
+  max-warnings:
+    description: 'Warnings to allow before the run fails (-1 allows any number)'
+    required: false
+  config:
+    description: 'Path to a .xslint.yml configuration file'
+    required: false
+  quiet:
+    description: 'Set to true to suppress informational logs'
+    required: false
 runs:
   using: 'node20'
   main: 'index.js'

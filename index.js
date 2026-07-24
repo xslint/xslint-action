@@ -9,11 +9,23 @@ const lines = (input) => (input || '')
   .split(/\r?\n/)
   .filter((line) => line !== '')
 
+const flags = [`--format=${process.env.INPUT_FORMAT || 'github'}`]
+if (process.env.INPUT_CONFIG) {
+  flags.push(`--config=${process.env.INPUT_CONFIG}`)
+}
+if (process.env['INPUT_MAX-WARNINGS']) {
+  flags.push(`--max-warnings=${process.env['INPUT_MAX-WARNINGS']}`)
+}
+if (process.env.INPUT_QUIET === 'true') {
+  flags.push('--quiet')
+}
+
 const outcome = spawnSync(
   'npx',
   [
     '--yes',
-    '@maxonfjvipon/xslint@0.0.6',
+    '@maxonfjvipon/xslint@0.0.9',
+    ...flags,
     ...lines(process.env.INPUT_ARGS),
     ...lines(process.env.INPUT_SUPPRESS).map((check) => `--suppress=${check}`),
   ],
