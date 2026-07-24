@@ -14,7 +14,7 @@ inputs:
     description: 'Checks to suppress'
     required: false
   format:
-    description: 'Output format: github (default, inline annotations), text, json, sarif'
+    description: 'Output format: github, text, json, or sarif'
     required: false
     default: 'github'
   max-warnings:
