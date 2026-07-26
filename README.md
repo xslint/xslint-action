@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE.txt)
 
-GitHub Action for [xslint](https://github.com/maxonfjvipon/xslint) - a CLI
+GitHub Action for [xslint](https://github.com/xslint/xslint) - a CLI
 linter for XSL stylesheets. By default it runs with `--format github`, so each
 defect appears as an inline annotation on the pull-request diff, with no
 SARIF-upload step.
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: maxonfjvipon/xslint-action@0.0.5
+      - uses: xslint/xslint-action@0.0.5
 ```
 
 With no inputs it lints the whole checkout and annotates the diff.
@@ -40,7 +40,7 @@ All inputs are optional:
 Lint specific paths:
 
 ```yaml
-- uses: maxonfjvipon/xslint-action@0.0.5
+- uses: xslint/xslint-action@0.0.5
   with:
     args: |
       src/xsl
@@ -50,7 +50,7 @@ Lint specific paths:
 Suppress specific checks:
 
 ```yaml
-- uses: maxonfjvipon/xslint-action@0.0.5
+- uses: xslint/xslint-action@0.0.5
   with:
     suppress: |
       short-names
@@ -60,7 +60,7 @@ Suppress specific checks:
 Allow up to ten warnings and emit SARIF instead of annotations:
 
 ```yaml
-- uses: maxonfjvipon/xslint-action@0.0.5
+- uses: xslint/xslint-action@0.0.5
   with:
     max-warnings: '10'
     format: 'sarif'
