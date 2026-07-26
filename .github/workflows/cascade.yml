@@ -33,6 +33,11 @@ jobs:
             exit 0
           fi
           sed -E -i "s|@maxonfjvipon/xslint@[0-9.]+|@maxonfjvipon/xslint@${NEW}|" index.js
+          echo "waiting for @maxonfjvipon/xslint@${NEW} to propagate to npm"
+          for i in $(seq 1 30); do
+            test -n "$(npm view "@maxonfjvipon/xslint@${NEW}" version 2>/dev/null)" && break
+            sleep 10
+          done
           echo "changed=true" >> "${GITHUB_OUTPUT}"
       - name: Validate the action against the new xslint
         if: steps.bump.outputs.changed == 'true'
