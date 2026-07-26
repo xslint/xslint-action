@@ -25,6 +25,7 @@ jobs:
           sed -E -i "s/xslint-action@[0-9.]+/xslint-action@${latest}/g" README.md
       - uses: peter-evans/create-pull-request@v8
         with:
+          token: ${{ secrets.DISPATCH_TOKEN }}
           sign-commits: true
           branch: version-up
           commit-message: 'new version in README'

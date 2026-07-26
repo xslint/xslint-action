@@ -30,6 +30,7 @@ jobs:
       - uses: peter-evans/create-pull-request@v8
         if: steps.version.outputs.latest != steps.version.outputs.current
         with:
+          token: ${{ secrets.DISPATCH_TOKEN }}
           sign-commits: true
           branch: xslint-version-up
           commit-message: 'new version ${{ steps.version.outputs.latest }} in index.js'
