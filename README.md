@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: xslint/xslint-action@0.0.5
+      - uses: xslint/xslint-action@0.0.6
 ```
 
 With no inputs it lints the whole checkout and annotates the diff.
@@ -40,7 +40,7 @@ All inputs are optional:
 Lint specific paths:
 
 ```yaml
-- uses: xslint/xslint-action@0.0.5
+- uses: xslint/xslint-action@0.0.6
   with:
     args: |
       src/xsl
@@ -50,7 +50,7 @@ Lint specific paths:
 Suppress specific checks:
 
 ```yaml
-- uses: xslint/xslint-action@0.0.5
+- uses: xslint/xslint-action@0.0.6
   with:
     suppress: |
       short-names
@@ -60,7 +60,7 @@ Suppress specific checks:
 Allow up to ten warnings and emit SARIF instead of annotations:
 
 ```yaml
-- uses: xslint/xslint-action@0.0.5
+- uses: xslint/xslint-action@0.0.6
   with:
     max-warnings: '10'
     format: 'sarif'
