@@ -9,7 +9,7 @@ SHELL := bash
 all: test test-default test-with-arg
 
 test:
-	output=$$(GITHUB_WORKSPACE='.' INPUT_ARGS=$$'xsl-packs/xsl-with-no-violations.xsl\nxsl-packs/xsl-with-some-violations.xsl' INPUT_SUPPRESS=$$'empty-content-in-instruction\nstarts-with-double-slash' node index.js 2>&1 || true)
+	output=$$(GITHUB_WORKSPACE='.' INPUT_ARGS=$$'xsl-packs/xsl-with-no-violations.xsl\nxsl-packs/xsl-with-some-violations.xsl' INPUT_SUPPRESS=$$'empty-content-in-instruction\nstarts-with-double-slash' INPUT_CONFIG='xsl-packs/all.xslint.yml' node index.js 2>&1 || true)
 	echo "$$output"
 	for expected in \
 		"Processed files: 2" \
