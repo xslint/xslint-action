@@ -17,6 +17,7 @@
   </xsl:variable>
   <xsl:template match="cd">
     <p>
+      <xsl:if test="title"/>
       <xsl:if test="./country=$c">
         <xsl:apply-templates select="title"/>
         <xsl:apply-templates select="artist"/>
