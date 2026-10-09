@@ -13,6 +13,9 @@ const flags = [`--format=${process.env.INPUT_FORMAT || 'github'}`]
 if (process.env.INPUT_CONFIG) {
   flags.push(`--config=${process.env.INPUT_CONFIG}`)
 }
+if (process.env.INPUT_BASELINE) {
+  flags.push(`--baseline=${process.env.INPUT_BASELINE}`)
+}
 if (process.env['INPUT_MAX-WARNINGS']) {
   flags.push(`--max-warnings=${process.env['INPUT_MAX-WARNINGS']}`)
 }

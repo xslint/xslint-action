@@ -29,8 +29,11 @@ With no inputs it lints the whole checkout and annotates the diff.
 All inputs are optional:
 
 - `args`: files and directories to check, one per line (defaults to `.`).
-- `suppress`: checks to suppress, one per line.
+- `suppress`: checks to suppress, one per line. An entry that names no check
+  fails the run.
 - `format`: output format - `github` (default), `text`, `json`, or `sarif`.
+- `baseline`: path to a baseline file. Defects it records go unreported, and
+  a recorded defect that is gone fails the run.
 - `max-warnings`: warnings to allow before the run fails (`-1` allows any).
 - `config`: path to a `.xslint.yml` configuration file.
 - `quiet`: set to `true` to suppress the informational logs.
@@ -66,6 +69,21 @@ Allow up to ten warnings and emit SARIF instead of annotations:
     format: 'sarif'
 ```
 
+Fail on any defect a committed baseline does not record, as the [adoption
+guide][adopting] recommends:
+
+```yaml
+- uses: xslint/xslint-action@0.0.14
+  with:
+    baseline: 'xslint-baseline.json'
+    max-warnings: '0'
+    args: src
+```
+
+Write the baseline locally with
+`xslint --baseline-write xslint-baseline.json src` and commit it; the action
+only reads it.
+
 ## How to Contribute
 
 Fork repository, make changes, then send us a [pull request][guidelines].
@@ -84,5 +102,6 @@ You will need GNU [make] and [Node.js] installed
 Copyright (c) 2026 Max Trunnikov. MIT License.
 
 [guidelines]: https://www.yegor256.com/2014/04/15/github-guidelines.html
+[adopting]: https://xslint.github.io/xslint/manual/adopting.html
 [make]: https://www.gnu.org/software/make/manual/make.html
 [Node.js]: https://nodejs.org
