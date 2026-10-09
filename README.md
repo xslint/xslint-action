@@ -73,7 +73,7 @@ Fail on any defect a committed baseline does not record, as the [adoption
 guide][adopting] recommends:
 
 ```yaml
-- uses: xslint/xslint-action@0.0.14
+- uses: xslint/xslint-action@0.0.15
   with:
     baseline: 'xslint-baseline.json'
     max-warnings: '0'
