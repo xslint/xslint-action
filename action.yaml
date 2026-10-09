@@ -17,6 +17,9 @@ inputs:
     description: 'Output format: github, text, json, or sarif'
     required: false
     default: 'github'
+  baseline:
+    description: 'Path to a baseline file whose recorded defects the run absorbs'
+    required: false
   max-warnings:
     description: 'Warnings to allow before the run fails (-1 allows any number)'
     required: false
