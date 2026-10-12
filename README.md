@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: xslint/xslint-action@0.0.15
+      - uses: xslint/xslint-action@0.0.16
 ```
 
 With no inputs it lints the whole checkout and annotates the diff.
@@ -43,7 +43,7 @@ All inputs are optional:
 Lint specific paths:
 
 ```yaml
-- uses: xslint/xslint-action@0.0.15
+- uses: xslint/xslint-action@0.0.16
   with:
     args: |
       src/xsl
@@ -53,7 +53,7 @@ Lint specific paths:
 Suppress specific checks:
 
 ```yaml
-- uses: xslint/xslint-action@0.0.15
+- uses: xslint/xslint-action@0.0.16
   with:
     suppress: |
       short-names
@@ -63,7 +63,7 @@ Suppress specific checks:
 Allow up to ten warnings and emit SARIF instead of annotations:
 
 ```yaml
-- uses: xslint/xslint-action@0.0.15
+- uses: xslint/xslint-action@0.0.16
   with:
     max-warnings: '10'
     format: 'sarif'
@@ -73,7 +73,7 @@ Fail on any defect a committed baseline does not record, as the [adoption
 guide][adopting] recommends:
 
 ```yaml
-- uses: xslint/xslint-action@0.0.15
+- uses: xslint/xslint-action@0.0.16
   with:
     baseline: 'xslint-baseline.json'
     max-warnings: '0'
