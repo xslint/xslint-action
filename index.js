@@ -27,7 +27,7 @@ const outcome = spawnSync(
   'npx',
   [
     '--yes',
-    '@maxonfjvipon/xslint@0.7.0',
+    '@maxonfjvipon/xslint@0.8.0',
     ...flags,
     ...lines(process.env.INPUT_ARGS),
     ...lines(process.env.INPUT_SUPPRESS).map((check) => `--suppress=${check}`),
