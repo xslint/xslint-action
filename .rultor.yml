@@ -1,0 +1,8 @@
+# SPDX-FileCopyrightText: Copyright (c) 2026 Max Trunnikov
+# SPDX-License-Identifier: MIT
+---
+docker:
+  image: maxonfjvipon/rultor-image-js:latest
+merge:
+  script: |-
+    make all

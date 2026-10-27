@@ -10,9 +10,12 @@ jobs:
   sentinel:
     timeout-minutes: 15
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
       - uses: actions/checkout@v6
       - uses: maxonfjvipon/deps-sentinel-action@0.0.4
         with:
-          token: ${{ secrets.OWNER_TOKEN }}
+          token: ${{ secrets.DISPATCH_TOKEN }}
           owner: maxonfjvipon
