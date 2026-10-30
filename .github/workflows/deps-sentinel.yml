@@ -14,7 +14,7 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - uses: maxonfjvipon/deps-sentinel-action@0.0.4
         with:
           token: ${{ secrets.DISPATCH_TOKEN }}
